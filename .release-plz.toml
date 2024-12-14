@@ -1,0 +1,6 @@
+[workspace]
+semver_check = false
+
+[[package]]
+name = "restic-crd"
+semver_check = true
