@@ -4,6 +4,10 @@ use kube::CustomResourceExt;
 use restic_crd::{Backup, ScheduledBackup};
 
 fn main() {
+    // Make sure target directory exists
+    std::fs::create_dir_all("crds").unwrap();
+
+    // Generate CRD YAML
     let backup_crd = serde_yaml::to_string(&Backup::crd()).unwrap();
     let scheduled_backup_crd = serde_yaml::to_string(&ScheduledBackup::crd()).unwrap();
 
