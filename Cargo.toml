@@ -1,7 +1,11 @@
 [package]
 name = "restic-operator"
+description = "Restic Operator"
+authors = ["Anshul Gupta <ansg191@anshulg.com>"]
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+publish = ["anshulg"]
 
 [features]
 default = []

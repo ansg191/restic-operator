@@ -1,7 +1,11 @@
 [package]
 name = "restic-crd"
+description = "Restic Operator CRD definitions"
+authors = ["Anshul Gupta <ansg191@anshulg.com>"]
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+publish = ["anshulg"]
 
 [dependencies]
 bon = "3.3.0"
