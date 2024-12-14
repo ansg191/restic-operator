@@ -1,0 +1,12 @@
+[package]
+name = "restic-crd"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bon = "3.3.0"
+k8s-openapi = { version = "0.23.0", default-features = false, features = ["schemars", "v1_30"] }
+kube = { version = "0.97.0", features = ["derive"] }
+schemars = "0.8.21"
+serde = "1.0.215"
+serde_json = "1.0.133"

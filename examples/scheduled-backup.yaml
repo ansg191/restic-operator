@@ -1,0 +1,40 @@
+apiVersion: restic.anshulg.com/v1alpha1
+kind: ScheduledBackup
+metadata:
+  name: test
+  namespace: default
+spec:
+  schedule: "*/2 * * * *"
+  suspend: true
+  backup:
+    restic:
+      repository:
+        type: rest
+        uri: https://restic.anshulg.com/kellnr-restic/
+        password:
+          key: abc
+          name: xyz
+        restCredentials:
+          password:
+            key: abc
+            name: xyz
+          username:
+            key: abc
+            name: xyz
+      compression: max
+      retention:
+        afterBackup: true
+        keepDaily: 7
+        keepWeekly: 4
+        prune: true
+      backup:
+        tag:
+          - kellnr
+    volume:
+      mounts:
+        - mountPath: /opt/kdata
+          name: kellnr-data
+      volumes:
+        - name: kellnr-data
+          persistentVolumeClaim:
+            claimName: kellnr

@@ -1,0 +1,37 @@
+apiVersion: restic.anshulg.com/v1alpha1
+kind: Backup # Identifier of the resource type.
+metadata:
+  name: test-echo # Name of the "Echo" custom resource instance, may be changed to your liking
+  namespace: default # Namespace must exist and account in KUBECONFIG must have sufficient permissions
+spec:
+  restic:
+    repository:
+      type: rest
+      uri: https://restic.anshulg.com/kellnr-restic/
+      password:
+        key: abc
+        name: xyz
+      restCredentials:
+        username:
+          name: abc
+          key: xyz
+        password:
+          name: abc
+          key: xyz
+    compression: max
+    retention:
+      afterBackup: true
+      keepDaily: 7
+      keepWeekly: 4
+      prune: true
+    backup:
+      tag:
+        - kellnr
+  volume:
+    mounts:
+      - mountPath: /opt/kdata
+        name: kellnr-data
+    volumes:
+      - name: kellnr-data
+        persistentVolumeClaim:
+          claimName: kellnr
