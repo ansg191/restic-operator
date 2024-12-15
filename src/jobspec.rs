@@ -34,6 +34,11 @@ impl BackupJobSpec {
         let env = fill_env(backup, &mut rpcfg);
         let (volume_mounts, volumes) = fill_volume_mounts(backup, config_name);
 
+        // If no args or command is provided, default args to "backup"
+        if rpcfg.args.is_none() && rpcfg.command.is_none() {
+            rpcfg.args = Some(vec!["backup".to_owned()]);
+        }
+
         Self {
             image,
             image_pull_policy: rpcfg.image_pull_policy.take(),
