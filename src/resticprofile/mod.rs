@@ -15,7 +15,7 @@ use crate::{
 
 pub mod config;
 
-const PASSWORD_FILE_PATH: &str = "/resticprofile/password";
+const PASSWORD_FILE_PATH: &str = "/resticprofile/password.txt";
 
 #[derive(Debug, Clone)]
 pub struct ResticProfile {
