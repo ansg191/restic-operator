@@ -28,18 +28,14 @@ tracing = "0.1.41"
 tracing-panic = "0.1.2"
 tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
 
-[build-dependencies]
-kube = { version = "0.97.0", default-features = false }
-restic-crd = { version = "0.1.0", path = "restic-crd", registry = "anshulg" }
-serde_yaml = "0.9.34"
-
 ### WORKSPACE ###
 
 [workspace]
 resolver = "2"
 members = [
     "restic-crd",
-    "."
+    ".",
+    "xtask"
 ]
 
 [workspace.lints.rust]
