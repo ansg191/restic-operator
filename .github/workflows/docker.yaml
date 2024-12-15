@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    tags: [ 'restic-operator-v*.*.*' ]
   pull_request:
     branches: [ "main" ]
 
@@ -54,9 +54,9 @@ jobs:
             type=schedule,pattern=nightly
             type=ref,event=branch
             type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
+            type=match,pattern=restic-operator-v(.*),group=1
+            type=match,pattern=restic-operator-v(\d.\d),group=1
+            type=match,pattern=restic-operator-v(\d),group=1
             type=sha
 
       # Build and push Docker image with Buildx (don't push on PR)
