@@ -28,9 +28,13 @@ async fn main() {
         .await
         .expect("Expected a valid KUBECONFIG environment variable.");
 
+    info!("Starting up...");
+
     let signal = tokio::signal::ctrl_c();
     let backup_fut = tokio::spawn(backup::run_controller(k8s_client.clone()));
     let schedule_fut = tokio::spawn(schedule::run_controller(k8s_client.clone()));
+
+    info!("Controllers started.");
 
     tokio::select! {
         _ = signal => {}
