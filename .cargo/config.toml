@@ -1,2 +1,5 @@
 [registries.anshulg]
 index = "sparse+https://crates.anshulg.com:443/api/v1/crates/"
+
+[alias]
+xtask = "run --package xtask --"
