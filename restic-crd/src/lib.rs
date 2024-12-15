@@ -18,6 +18,8 @@ use serde::{Deserialize, Serialize};
     plural = "scheduled-backups",
     derive = "PartialEq",
     status = "ScheduledBackupStatus",
+    shortname = "rsb",
+    category = "restic",
     printcolumn = r#"{"name": "Age", "type": "date", "jsonPath": ".metadata.creationTimestamp"}"#,
     // printcolumn = r#"{"name": "Phase", "type": "string", "jsonPath": ".status.phase"}"#,
     namespaced
@@ -60,6 +62,8 @@ pub struct ScheduledBackupStatus {
     plural = "backups",
     derive = "PartialEq",
     status = "BackupStatus",
+    shortname = "rb",
+    category = "restic",
     printcolumn = r#"{"name": "Age", "type": "date", "jsonPath": ".metadata.creationTimestamp"}"#,
     printcolumn = r#"{"name": "Phase", "type": "string", "jsonPath": ".status.phase"}"#,
     namespaced
