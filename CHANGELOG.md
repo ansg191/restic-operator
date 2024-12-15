@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2](https://github.com/ansg191/restic-operator/compare/restic-operator-v0.1.1...restic-operator-v0.1.2) - 2024-12-15
+
+### Other
+
+- updated the following local packages: restic-crd, restic-crd
+
 ## [0.1.1](https://github.com/ansg191/restic-operator/compare/restic-operator-v0.1.0...restic-operator-v0.1.1) - 2024-12-15
 
 ### Fixed
