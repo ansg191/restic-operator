@@ -25,9 +25,10 @@ pub struct ResticProfile {
 }
 
 impl ResticProfile {
-    pub fn new(ns: String, name: impl AsRef<str>, backup: &BackupSpec) -> Self {
-        let config = create_config(backup);
-        let name = format!("{}-profile", name.as_ref());
+    pub fn new(ns: String, name: impl Into<String>, backup: &BackupSpec) -> Self {
+        let backup_name = name.into();
+        let name = format!("{backup_name}-profile");
+        let config = create_config(backup_name, backup);
         ResticProfile { name, ns, config }
     }
 
@@ -99,7 +100,7 @@ impl Deployable for ResticProfile {
     }
 }
 
-fn create_config(backup: &BackupSpec) -> ResticProfileConfig {
+fn create_config(name: String, backup: &BackupSpec) -> ResticProfileConfig {
     let paths = extract_paths(backup);
 
     let backup_conf = backup.restic.backup.as_ref().map(|b| {
@@ -111,6 +112,7 @@ fn create_config(backup: &BackupSpec) -> ResticProfileConfig {
             .maybe_exclude_larger_than(b.exclude_larger_than.clone())
             .maybe_iexclude(b.iexclude.clone())
             .maybe_tag(b.tag.clone())
+            .host(name)
             .build()
     });
 

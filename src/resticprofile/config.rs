@@ -115,6 +115,8 @@ pub struct ResticProfileProfileBackup {
     pub exclude_if_present: Vec<String>,
     /// Max size of the files to be backed up (allowed suffixes: k/K, m/M, g/G, t/T).
     pub exclude_larger_than: Option<String>,
+    /// Set the hostname for the snapshot manually.
+    pub host: Option<String>,
     /// Same as –exclude pattern but ignores the casing of filenames.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     #[builder(default)]
@@ -137,7 +139,6 @@ pub struct ResticProfileProfileRetention {
     #[serde(skip_serializing_if = "std::ops::Not::not")]
     #[builder(default)]
     pub before_backup: bool,
-    /// Apply retention before starting the backup command
     #[builder(default)]
     pub host: bool,
 
